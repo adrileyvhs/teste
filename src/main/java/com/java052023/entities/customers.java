@@ -21,4 +21,5 @@ public class customers {
     private String lastName;
     private String email ;
     private String gender ;
+    private  String state;
 }
