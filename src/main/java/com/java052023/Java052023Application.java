@@ -1,5 +1,6 @@
 package com.java052023;
 
+import com.java052023.dto.CustomerDto;
 import com.java052023.projection.CustomerProjetction;
 import com.java052023.repositorie.ConstumerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Java052023Application implements CommandLineRunner {
@@ -22,10 +24,12 @@ public class Java052023Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         List<CustomerProjetction> list = constumerRepository.localizar1("US");
-        for (CustomerProjetction obj : list){
-            System.out.println(obj.getfirst_Name());
+        List<CustomerDto> list1 = list.stream().map(x-> new CustomerDto(x)).collect(Collectors.toList());
+
+        for (CustomerDto obj : list1){
+            System.out.println(obj);
         }
 
-        System.out.println( "Total de Registros : " + list.stream().count());
+        System.out.println( "Total de Registros : " + list1.stream().count());
     }
 }
