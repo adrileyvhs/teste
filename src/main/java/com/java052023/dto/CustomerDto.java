@@ -10,9 +10,19 @@ import lombok.*;
 @ToString
 
 public class CustomerDto {
-    private  String first_Name;
+    private String first_Name;
+    private String lastName;
+    private String email;
+    private String gender;
+    private String state;
+    private String telefone;
 
-public  CustomerDto(CustomerProjetction customerProjetction) {
-       first_Name = customerProjetction.getfirst_Name();
-}
+    public CustomerDto(String state) {
+        this.gender = gender;
+    }
+
+    //
+//public  CustomerDto(CustomerProjetction customerProjetction) {
+//       first_Name = customerProjetction.getfirst_Name();
+//}
 }

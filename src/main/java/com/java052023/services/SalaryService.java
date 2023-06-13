@@ -1,15 +1,21 @@
 package com.java052023.services;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-@AllArgsConstructor
 
+//@AllArgsConstructor()
+//@NoArgsConstructor
+@Getter
+@Setter
+@Service
 public class SalaryService {
-   private  TaxService  taxService  ;
-   private  Previdencia previdencia ;
-
-   public double salarioLiquido(double salariobBruto) {
-       return  salariobBruto- taxService.tax(salariobBruto) - previdencia.desconto(salariobBruto);
+    @Autowired
+    private TaxService taxService ;
+    @Autowired
+    private PrevidenciaServices previdenciaServices;
+    public double netSalary(double salariobBruto) {
+       return  salariobBruto - taxService.tax(salariobBruto) - previdenciaServices.desconto(salariobBruto);
    }
 }
